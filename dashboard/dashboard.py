@@ -5,8 +5,11 @@ import streamlit as st
 from babel.numbers import format_currency
 import numpy as np
 sns.set(style='dark')
+
+# Disable warning
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+# Function to create bar plot of bikes rented by season
 def create_bikes_by_seasons(day_df):
   plt.figure(figsize=(15, 5)) # set the size of the plot
 
@@ -31,6 +34,7 @@ def create_bikes_by_seasons(day_df):
 
   st.pyplot()
 
+# Function to create bar plot of bikes rented by holiday or working day
 def create_bikes_by_day(day_df):
   from matplotlib.ticker import FuncFormatter
   plt.figure(figsize=(8, 5)) # set the size of the plot
@@ -53,6 +57,7 @@ def create_bikes_by_day(day_df):
 
   st.pyplot()
 
+# Function to create line plot of bikes rented by last 12 months
 def plot_last_12_months(day_df):
   plt.figure(figsize=(15, 5)) # set the size of the plot
 
@@ -75,23 +80,36 @@ def plot_last_12_months(day_df):
 
   st.pyplot()
 
+# Read the cleaned data
 day_df = pd.read_csv('dashboard/cleaned_data.csv')
 
+# Create the dashboard title and description
 st.title('Bike Rental Dashboard')
+st.markdown("""
+This dashboard shows the number of bikes rented by season, holiday or working day, and the last 12 months.
+""")
 
+# Create a sidebar for user input
 st.sidebar.title('Options')
 plot_option = st.sidebar.selectbox('Select Plot', ['Seasonal Rentals', 'Holiday vs. Working Day', 'Last 12 Months'])
 
+# Create the plots
 if plot_option == 'Seasonal Rentals':
+  # Create a plot of the number of bikes rented by season
   st.sidebar.info('View the number of bikes rented by season.')
   st.sidebar.info('Season = 1: Spring, 2: Summer, 3: Fall, 4: Winter')
   create_bikes_by_seasons(day_df)
 elif plot_option == 'Holiday vs. Working Day':
+  # Create a plot of the number of bikes rented by holiday or working day
   st.sidebar.info('View the number of bikes rented by holiday or working day.')
   create_bikes_by_day(day_df)
 elif plot_option == 'Last 12 Months':
+  # Create a plot of the number of bikes rented by last 12 months
   st.sidebar.info('View the number of bikes rented for the last 12 months.')
   plot_last_12_months(day_df)
 
+# show description for all the plots
 st.write('This is a dashboard to visualize the data from the cleaned_data.csv file.')
 
+# create footer
+st.write('@2023 ~ Created by: [krisna31](https://github.com/krisna31)')
