@@ -77,22 +77,21 @@ def plot_last_12_months(day_df):
 
 day_df = pd.read_csv('dashboard/cleaned_data.csv')
 
-st.title('Dashboard')
-
 st.title('Bike Rental Dashboard')
 
 st.sidebar.title('Options')
 plot_option = st.sidebar.selectbox('Select Plot', ['Seasonal Rentals', 'Holiday vs. Working Day', 'Last 12 Months'])
 
 if plot_option == 'Seasonal Rentals':
-    st.sidebar.info('View the number of bikes rented by season.')
-    create_bikes_by_seasons(day_df)
+  st.sidebar.info('View the number of bikes rented by season.')
+  st.sidebar.info('Season = 1: Spring, 2: Summer, 3: Fall, 4: Winter')
+  create_bikes_by_seasons(day_df)
 elif plot_option == 'Holiday vs. Working Day':
-    st.sidebar.info('View the number of bikes rented by holiday or working day.')
-    create_bikes_by_day(day_df)
+  st.sidebar.info('View the number of bikes rented by holiday or working day.')
+  create_bikes_by_day(day_df)
 elif plot_option == 'Last 12 Months':
-    st.sidebar.info('View the number of bikes rented for the last 12 months.')
-    plot_last_12_months(day_df)
+  st.sidebar.info('View the number of bikes rented for the last 12 months.')
+  plot_last_12_months(day_df)
 
 st.write('This is a dashboard to visualize the data from the cleaned_data.csv file.')
 
