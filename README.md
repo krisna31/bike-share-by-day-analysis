@@ -2,7 +2,7 @@
 
 ## BiReDay Dashboard ✨
 
-[![BiReDay Dashboard](Simple_Dashbord_hosted.png)](https://bike-share-by-day-analysis-ff3pdziw9gb837vl3x2jsp.streamlit.app/)
+[![BiReDay Dashboard](new_bike_share_dashboard_one_point_one.png)](https://bike-share-by-day-analysis-ff3pdziw9gb837vl3x2jsp.streamlit.app/)
 
 ## Live Demo
 
